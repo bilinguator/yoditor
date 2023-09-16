@@ -1,5 +1,6 @@
 import os
 import re
+from tqdm import tqdm
 
 """Uploading two lists of Russian words:
 list `yo_sure` - words where <Ё> letter is 100% certain;
@@ -33,4 +34,16 @@ def replace_by_regex (text, regex, old, new):
         end = hit.end()
         text = text[:start] + text[start:end].replace(old, new) \
             + text[end:]
+    return text
+
+def recover_yo_sure (text):
+    """Recover all certian <Ё> in the text.
+    
+    str `text` - text where to find and recover certian <Ё> letters;
+    return - str: text with certian <Ё> letters recovered.
+    """
+    for i, word in enumerate(tqdm(yo_sure)):
+        for w_yo in {word.lower(), word.upper(), word.capitalize()}:
+            w_ye = w_yo.replace('ё', 'е').replace('Ё', 'Е')
+            text = replace_by_regex(text, rf'\b{w_ye}\b', w_ye, w_yo)
     return text
