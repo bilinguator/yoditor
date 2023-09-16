@@ -13,7 +13,7 @@ yo_unsure_path = os.path.normpath(f'{os.getcwd()}/yobase/yo_unsure.txt')
 assert os.path.isfile(yo_sure_path), \
     f'\nFile with words always spelled with the <Ё> letter not found!' + \
     f'\nФайл со словами, которые всегда пишутся с буквой <Ё>, не найден!\n\033[1m{yo_sure_path}\033[0m'
-assert os.path.isfile(yo_unsure_path+'_'), \
+assert os.path.isfile(yo_unsure_path), \
     f'\nFile with words not always spelled with the <Ё> letter not found!' + \
     f'\nФайл со словами, которые не всегда пишутся с буквой <Ё>, не найден!\n\033[1m{yo_unsure_path}\033[0m'
 
@@ -54,7 +54,7 @@ def recover_yo_unsure (text, print_width=100, yes_reply='ё'):
     """Recover all uncertain <Ё> in the text in the interaction mode.
     
     str `text` - text where to find and recover uncertain <Ё> letters;
-    int `print_width` - how many characters to print while interaction;
+    int `print_width` - how many characters to print while interaction (default: 100);
     str `yes_reply` - input required to confirm replacement <Е> with <Ё>;
     return - str: text with uncertain <Ё> letters recovered.
     """
