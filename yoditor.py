@@ -4,16 +4,18 @@ from tqdm import tqdm
 
 """Uploading two lists of Russian words:
 list `yo_sure` - words where <Ё> letter is 100% certain;
-list `yo_unsure` - words with uncertainty about <Ё> letters.
+list `yo_unsure` - words with uncertianty about <Ё> letters.
 """
 
-yo_sure_path = 'yobase/yo_sure.txt'
-yo_unsure_path = 'yobase/yo_unsure.txt'
+yo_sure_path = os.path.normpath(f'{os.getcwd()}/yobase/yo_sure.txt')
+yo_unsure_path = os.path.normpath(f'{os.getcwd()}/yobase/yo_unsure.txt')
 
 assert os.path.isfile(yo_sure_path), \
-    'File with words certain about <Ё> (\033[1m{}\033[0m) not found!'.format(yo_sure_path)
-assert os.path.isfile(yo_unsure_path), \
-    'File with words uncertain about <Ё> (\033[1m{}\033[0m) not found!'.format(yo_unsure_path)
+    f'\nFile with words always spelled with the <Ё> letter not found!' + \
+    f'\nФайл со словами, которые всегда пишутся с буквой <Ё>, не найден!\n\033[1m{yo_sure_path}\033[0m'
+assert os.path.isfile(yo_unsure_path+'_'), \
+    f'\nFile with words not always spelled with the <Ё> letter not found!' + \
+    f'\nФайл со словами, которые не всегда пишутся с буквой <Ё>, не найден!\n\033[1m{yo_unsure_path}\033[0m'
 
 with open(yo_sure_path, 'r', encoding='UTF-8') as file:
     yo_sure = file.read().split()
@@ -52,7 +54,7 @@ def recover_yo_unsure (text, print_width=100, yes_reply='ё'):
     """Recover all uncertain <Ё> in the text in the interaction mode.
     
     str `text` - text where to find and recover uncertain <Ё> letters;
-    int `print_width` - how many characters to print;
+    int `print_width` - how many characters to print while interaction;
     str `yes_reply` - input required to confirm replacement <Е> with <Ё>;
     return - str: text with uncertain <Ё> letters recovered.
     """
@@ -86,4 +88,5 @@ def recover_yo_unsure (text, print_width=100, yes_reply='ё'):
                 if input(f'{word_with_ye} → {w}? ').lower() == yes_reply:
                     text = text[:start] + text[start:end].replace(word_with_ye, w) + text[end:]
     print('\n\033[1;31m<Ё> recovery complete!\033[0m')
+    print('\033[1;31mРасстановка точек над <Ё> завершена!\033[0m')
     return text
