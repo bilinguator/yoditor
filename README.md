@@ -41,7 +41,7 @@ Recover all uncertain `Ё` in the text in the interaction mode. This function do
 
 While the function is running, you are asked to choose if there is need to replace the `Е` to `Ё`. A part of the text is shown to comprehend the context, the questionable word is highlighted in bold and red. You can regulate the amount of characters shown specifying in the `print_width` variable. It equals 100 characters by default.
 
-To accept the `Е`-to-`Ё` replacement, type the value of the `yes_reply` argument into the input area. Dy default, it is `ё`, but you can specify another one. If replacement is not needed, type any other string of leave the input area empty. Do not forget to push `Enter` key in each step.
+To accept the `Е`-to-`Ё` replacement, type the value of the `yes_reply` argument into the input area. By default, it is `ё`, but you can specify another one. If replacement is not needed, type any other string of leave the input area empty. Do not forget to push `Enter` key in each step.
 
 In the example below, replacement is not needed on the first step, that is why no input entered. On all following steps, `ё` is entered because replacement is needed.
 
