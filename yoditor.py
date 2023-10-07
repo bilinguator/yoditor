@@ -7,8 +7,9 @@ list `yo_sure` - words where <Ё> letter is 100% certain;
 list `yo_unsure` - words with uncertianty about <Ё> letters.
 """
 
-yo_sure_path = os.path.normpath(f'{os.getcwd()}/yobase/yo_sure.txt')
-yo_unsure_path = os.path.normpath(f'{os.getcwd()}/yobase/yo_unsure.txt')
+script_dir = os.path.dirname(os.path.abspath(__file__))
+yo_sure_path = os.path.join(script_dir, 'yobase/yo_sure.txt')
+yo_unsure_path = os.path.join(script_dir, 'yobase/yo_unsure.txt')
 
 assert os.path.isfile(yo_sure_path), \
     f'\nFile with words always spelled with the <Ё> letter not found!' + \
