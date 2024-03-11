@@ -20,7 +20,7 @@ text = yoditor.recover_yo_sure(text)
 ```
 
 
-Recover all certain `Ё` in the `text` string. This function does not rewrite a variable — do not forget to redefine it.
+Recover all certain `Ё` in the `text` string.
 
 * *str* `text` — text where to find and recover certain `Ё` letters;
 
@@ -29,14 +29,14 @@ Recover all certain `Ё` in the `text` string. This function does not rewrite a 
 ## yoditor.recover_yo_unsure
 
 ```python
-text = yoditor.recover_yo_unsure(text)
+text = yoditor.recover_yo_unsure(text, print_width=100, yes_reply='ё')
 ```
 
-Recover all uncertain `Ё` in the text in the interaction mode. This function does not rewrite a variable — do not forget to redefine it.
+Recover all uncertain `Ё` in the text in the interaction mode.
     
 * *str* `text` — text where to find and recover uncertain `Ё` letters;
-* *int* `print_width` — how many characters to print while interaction (default: 100);
-* *str* `yes_reply` — input required to confirm replacement `Е` with `Ё`;
+* *int* `print_width` — how many characters to print while interaction (default: `100`);
+* *str* `yes_reply` — input required to confirm replacement `Е` with `Ё` (default: `'ё'`);
 * return *str* — text with uncertain `Ё` letters recovered.
 
 While the function is running, you are asked to choose if there is need to replace the `Е` to `Ё`. A part of the text is shown to comprehend the context, the questionable word is highlighted in bold and red. You can regulate the amount of characters shown specifying in the `print_width` variable. It equals 100 characters by default.
