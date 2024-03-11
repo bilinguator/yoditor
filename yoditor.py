@@ -56,7 +56,7 @@ def recover_yo_unsure (text, print_width=100, yes_reply='ё'):
     
     str `text` - text where to find and recover uncertain <Ё> letters;
     int `print_width` - how many characters to print while interaction (default: 100);
-    str `yes_reply` - input required to confirm replacement <Е> with <Ё>;
+    str `yes_reply` - input required to confirm replacement <Е> with <Ё> (default: "ё");
     return - str: text with uncertain <Ё> letters recovered.
     """
     for word in yo_unsure:
