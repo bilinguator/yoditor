@@ -163,7 +163,10 @@ def recover_yo_sure(text: str) -> str:
     """
 
     text = recover_yo_sure_compound_adjective(text)
-    yo_sure_words = yobase_text_intersection(yo_sure, text) + yo_sure_collocations
+    yo_sure_collocations_present = [collocation for collocation in yo_sure_collocations
+                                    if collocation.replace('ё', 'е') in text.lower()]
+    
+    yo_sure_words = yobase_text_intersection(yo_sure, text) + yo_sure_collocations_present
 
     for word in tqdm(yo_sure_words):
         for w_yo in (word.lower(), word.upper(), word.capitalize()):
